@@ -1,5 +1,5 @@
 export async function FetchUsers(query) {
-  const res = await fetch(`https://api.github.com/search/users?per_page=20&page=1&q=${query}`);
+  const res = await fetch(`https://api.github.com/search/users?q=${query}`);
 
   try {
     const data = await res.json();

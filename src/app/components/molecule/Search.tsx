@@ -4,9 +4,9 @@ import { Button } from "@nextui-org/button";
 import { Input } from "@nextui-org/input";
 import { Spacer } from "@nextui-org/spacer";
 
-import { FetchUsers } from "../fetch/FetchUsers";
+import { FetchUsers } from "../utils/get-users";
 
-export const Search = ({ handleUsers }) => {
+export const Search = ({ handleUsers, loadingHandler }) => {
   const [query, setQuery] = useState("");
   const [loading, setLoading] = useState(false);
   const [disabled, setDisabled] = useState(true);
@@ -22,12 +22,14 @@ export const Search = ({ handleUsers }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(null);
+    handleUsers(null);
+    loadingHandler(true);
 
     if (!query) {
+      loadingHandler(false);
       handleUsers(null);
       return setError("Please enter a user.");
     }
-    setLoading(true);
 
     try {
       const data = await FetchUsers(query);
@@ -37,7 +39,7 @@ export const Search = ({ handleUsers }) => {
       console.error(error);
       setError(error.message || "An error occurred. Please try again later.");
     } finally {
-      setLoading(false);
+      loadingHandler(false);
     }
   };
 
@@ -72,14 +74,12 @@ export const Search = ({ handleUsers }) => {
         <Spacer x={0.5} />
         <Button
           onClick={handleSubmit}
-          loading={loading}
           disabled={disabled}
           className="rounded-l"
         >
           Search
         </Button>
       </div>
-      {loading && <p className="text-neutral-700">Loading...</p>}
       {error && <p className="text-red">{error}</p>}
     </>
   );

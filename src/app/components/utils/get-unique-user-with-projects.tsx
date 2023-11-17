@@ -1,3 +1,5 @@
+//I know it's a bad principle to have two utils at the same logic.
+
 export async function FetchUniqueUser(query) {
   try {
     const [userResponse, projectsResponse] = await Promise.all([
