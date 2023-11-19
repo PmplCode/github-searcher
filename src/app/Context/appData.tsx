@@ -17,7 +17,7 @@ const GlobalContext = createContext({
   setSearchStep: (): number => 0,
 });
 
-export const GlobalContextProvider = ({ children }) => {
+export const GlobalContextProvider = ({ children }: { children: React.ReactNode }) => {
   const [users, setUsers] = useState(null);
   const [uniqueUser, setUniqueUser] = useState(null);
   const [userProjects, setUserProjects] = useState(null);
