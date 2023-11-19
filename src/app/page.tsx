@@ -1,5 +1,4 @@
 "use client";
-import { useState } from "react";
 import { Search } from "./components/molecule/Search";
 import { UserCard } from "./components/molecule/UserCard";
 import { UserGrid } from "./components/organism/UserGrid";
@@ -10,11 +9,11 @@ import { useGlobalContext } from "./Context/appData";
 import ScrollToTopButton from "./components/atom/ScrollToTopButton";
 import { HomeSvg } from "./components/atom/HomeSvg";
 import { ArrowBackSvg } from "./components/atom/ArrowBackSvg";
+import { ErrorModal } from "./components/atom/ErrorModal";
 
 export default function Home() {
   const {
     users,
-    setUsers,
     searchStep,
     setSearchStep,
     error,
@@ -22,12 +21,6 @@ export default function Home() {
     uniqueUser,
     userProjects,
   } = useGlobalContext();
-  const [nana, setUniqueUser] = useState(null);
-  const [nana1, setUserProjects] = useState(null);
-
-  const handleUsers = (e) => {
-    setUsers(e);
-  };
 
   return (
     <main className="text-[#414141] pb-6 max-w-[1440px] mx-auto">
@@ -49,27 +42,7 @@ export default function Home() {
           <Spinner />
         ) : (
           <>
-            {error && (
-              <div
-                role="alert"
-                className="alert alert-error w-[fit-content] mx-auto mt-4"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="stroke-current shrink-0 h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-                <span>{error}</span>
-              </div>
-            )}
+            {error && <ErrorModal error={error} />}
             {searchStep > 0 && (
               <button
                 onClick={() => setSearchStep((current) => --current)}
