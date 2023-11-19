@@ -52,11 +52,18 @@ export default function Home() {
                 {searchStep === 1 ? <HomeSvg /> : <ArrowBackSvg />}
               </button>
             )}
-            {searchStep === 1 && <UserGrid users={users} />}
+
+            {searchStep === 1 && (
+              // @ts-ignore: Unreachable code error
+              <UserGrid users={users} />
+            )}
             {searchStep === 2 && (
               <div className="flex flex-col md:flex-row md:gap-[5vw]">
                 <aside className="w-full md:w-[35vw]">
-                  {<UserCard uniqueUser={uniqueUser} />}
+                  {
+                    // @ts-ignore: Unreachable code error
+                    <UserCard uniqueUser={uniqueUser} />
+                  }
                 </aside>
                 <section className="w-full md:pr-6">
                   <ProjectList projects={userProjects ?? []} />

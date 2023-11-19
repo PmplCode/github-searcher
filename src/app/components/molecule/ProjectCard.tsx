@@ -1,6 +1,20 @@
 import React from 'react';
 
-const ProjectCard = ({ project }) => {
+interface Project {
+  name: string;
+  full_name: string;
+  description: string | null;
+  html_url: string;
+  language: string;
+  forks_count: number;
+  stargazers_count: number;
+  topics: string[];
+}
+interface ProjectCardProps {
+  project: Project;
+}
+
+const ProjectCard: React.FC<ProjectCardProps>  = ({ project }) => {
   const {
     name,
     full_name,

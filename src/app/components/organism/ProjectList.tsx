@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import ProjectCard from "../molecule/ProjectCard";
 import ProjectSearchBar from "../molecule/ProjectSearchbar";
-import { ProjectListProps, Project } from '../../types';
+import { ProjectListProps, Project } from '@/app/types';
 
 interface ProjectSearchBarProps {
   projects: Project[];
-  onSearch: (data: { name: string; technologies: string[] }) => void;
+  onSearch: (data: { name: string; technologies: string }) => void;
 }
 
 export const ProjectList: React.FC<ProjectListProps> = ({ projects }) => {
@@ -25,7 +25,7 @@ export const ProjectList: React.FC<ProjectListProps> = ({ projects }) => {
         project.name.toLowerCase().includes(searchParams.name.toLowerCase());
       const techMatch =
         !searchParams.technologies ||
-        searchParams.technologies == project.language?.toLowerCase();
+        searchParams.technologies === project.language?.toLowerCase();
 
       return nameMatch && techMatch;
     });

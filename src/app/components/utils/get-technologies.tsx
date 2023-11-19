@@ -33,9 +33,9 @@ export async function FetchUniqueTechnologies(
     // Convert set to an array
     const technologiesArray = Array.from(uniqueTechnologies);
     return technologiesArray;
-  } catch (error) {
-    console.error("Error fetching technologies:", error.message);
-    throw new Error(`Error fetching technologies: ${error.message}`);
+  } catch (error: any) {
+    console.error("Error fetching technologies:", (error as Error).message);
+    throw new Error(`Error fetching technologies: ${(error as Error).message}`);
   }
 }
 

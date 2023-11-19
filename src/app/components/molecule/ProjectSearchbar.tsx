@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { Select } from "@nextui-org/select";
 import { SelectItem } from "@nextui-org/select";
-import { Project } from "../../types";
+import { Project } from "@/app/types";
 
 interface ProjectSearchBarProps {
-  onSearch: (data: { name: string; technologies: string[] }) => void;
+  onSearch: (data: { name: string; technologies: string }) => void;
   projects: Project[]; // Replace YourProjectType with the actual type of your project
 }
 

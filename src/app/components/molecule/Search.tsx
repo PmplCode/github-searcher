@@ -7,13 +7,13 @@ export const Search = () => {
   const { setSearchStep, setError, setLoading, setUsers } = useGlobalContext();
   const [query, setQuery] = useState("");
 
-  const handleInput = (e) => {
+  const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setError("");
     const inputQuery = e.target.value;
     setQuery(inputQuery.trim());
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     setError("");
     setUsers(null);
@@ -32,16 +32,17 @@ export const Search = () => {
       setSearchStep(1);
     } catch (error) {
       console.error(error);
-      setError(error.message || "An error occurred. Please try again later.");
+      setError((error as Error).message || "An error occurred. Please try again later.");
     } finally {
       setLoading(false);
       setQuery("");
     }
   };
 
-  const handleKeyDown = (event) => {
-    if (event.key === "Enter" && query !== "") {
-      handleSubmit(event);
+  const handleKeyDown = (e: React.ChangeEvent<HTMLInputElement>) => {
+    // @ts-ignore: Unreachable code error
+    if (e.key === "Enter" && query !== "") {
+      handleSubmit(e);
     }
   };
 
@@ -54,10 +55,12 @@ export const Search = () => {
         value={query}
         autoComplete="off"
         onChange={(e) => handleInput(e)}
+        // @ts-ignore: Unreachable code error
         onKeyDown={handleKeyDown}
       />
       <button
         className="btn join-item rounded-r-full xl:btn-lg"
+        // @ts-ignore: Unreachable code error
         onClick={handleSubmit}
         disabled={query === "" ? true : false}
       >

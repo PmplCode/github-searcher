@@ -1,6 +1,7 @@
+import { UserCardProps } from "@/app/types";
 import Image from "next/image";
 
-export const UserCard = ({ uniqueUser }) => {
+export const UserCard: React.FC<UserCardProps> = ({ uniqueUser }) => {
   if (!uniqueUser) return null;
 
   const {

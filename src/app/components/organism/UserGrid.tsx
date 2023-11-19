@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { Card, CardHeader, CardBody } from "@nextui-org/card";
 import { Image } from "@nextui-org/image";
 import { FetchUniqueUser } from "../utils/get-unique-user-with-projects";
 import { useGlobalContext } from "@/app/Context/appData";
+import { GitHubUserResponse } from "@/app/types";
 
-export const UserGrid = ({ users }) => {
+export const UserGrid = ({ users }: { users: GitHubUserResponse }) => {
   const {
     setError,
     setLoading,
@@ -23,7 +23,7 @@ export const UserGrid = ({ users }) => {
 
     if (!alias) {
       setLoading(false);
-      handleUniqueUser(null);
+      setUniqueUser(null);
       return setError("Please click a User.");
     }
 
@@ -35,8 +35,9 @@ export const UserGrid = ({ users }) => {
       setUserProjects(data.projects);
       setSearchStep(2);
     } catch (error) {
-      console.error(error);
-      setError(error.message || "An error occurred. Please try again later.");
+      setError(
+        (error as Error).message || "An error occurred. Please try again later."
+      );
     } finally {
       setLoading(false);
     }
@@ -54,7 +55,9 @@ export const UserGrid = ({ users }) => {
         )}
       </h3>
     ) : (
-      <h3 className="text-center font-raleway text-2xl w-[fit-content] mx-auto my-6 lg:text-3xl">No matches found</h3>
+      <h3 className="text-center font-raleway text-2xl w-[fit-content] mx-auto my-6 lg:text-3xl">
+        No matches found
+      </h3>
     );
 
   // Calculate the range of users to display for the current page

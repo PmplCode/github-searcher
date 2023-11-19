@@ -49,6 +49,7 @@ export interface Project {
   id: number;
   name: string;
   owner: Owner;
+  full_name: string;
   html_url: string;
   description: string;
   language: string;
@@ -78,4 +79,28 @@ export interface Project {
 
 export interface ProjectListProps {
   projects: Project[];
+}
+
+export interface GitHubUserResponse {
+  total_count: number;
+  items: {
+    id: number;
+    login: string;
+    avatar_url: string;
+  }[];
+}
+
+export interface UserCardProps {
+  uniqueUser: {
+    login: string;
+    avatar_url: string;
+    html_url: string;
+    name: string;
+    bio: string;
+    public_repos: number;
+    followers: number;
+    following: number;
+    created_at: string; // Adjust the type based on the actual type of created_at
+    updated_at: string; // Adjust the type based on the actual type of updated_at
+  };
 }

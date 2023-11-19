@@ -1,4 +1,4 @@
-export async function FetchUsers(query) {
+export async function FetchUsers(query: string) {
   const res = await fetch(`https://api.github.com/search/users?q=${query}`);
 
   try {
@@ -9,7 +9,7 @@ export async function FetchUsers(query) {
     }
 
     return data;
-  } catch (error) {
+  } catch (error: any) {
     // Handle errors that occur during JSON parsing
     if (error.message === "Not Found") {
       throw new Error(`Error, try again later.`);

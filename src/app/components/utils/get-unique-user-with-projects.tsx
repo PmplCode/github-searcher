@@ -1,6 +1,6 @@
 //I know it's a bad principle to have two utils at the same logic.
 
-export async function FetchUniqueUser(query) {
+export async function FetchUniqueUser(query: string) {
   try {
     const [userResponse, projectsResponse] = await Promise.all([
       fetch(`https://api.github.com/users/${query}`),
@@ -11,7 +11,7 @@ export async function FetchUniqueUser(query) {
     const projectsData = await handleResponse(projectsResponse);
 
     return { user: userData, projects: projectsData };
-  } catch (error) {
+  } catch (error: any) {
     if (error.message === "Not Found") {
       throw new Error(`User not found, please be more specific.`);
     } else {
@@ -20,7 +20,8 @@ export async function FetchUniqueUser(query) {
   }
 }
 
-async function handleResponse(response) {
+
+async function handleResponse(response: Response) {
   const data = await response.json();
 
   if (!response.ok) {
