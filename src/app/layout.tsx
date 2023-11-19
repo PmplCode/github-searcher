@@ -8,6 +8,11 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Github search portal",
   description: "Project for MVST, Github user searcher.",
+  applicationName: "Github search portal",
+  authors: [
+    { name: "Eloi Pampliega", url: "https://eloipampliega.netlify.app/" },
+  ],
+  icons: 'https://cdn-icons-png.flaticon.com/512/25/25231.png',
 };
 
 export default function RootLayout({

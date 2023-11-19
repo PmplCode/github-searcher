@@ -1,5 +1,11 @@
-export const ErrorModal = ({ error }): string => {
-  return (
+import { renderToString } from "react-dom/server";
+
+interface ErrorModalProps {
+  error: string;
+}
+
+export const ErrorModal: React.FC<ErrorModalProps> = ({ error }) => {
+  const content = renderToString(
     <div
       role="alert"
       className="alert alert-error w-[fit-content] mx-auto mt-4"
@@ -20,4 +26,6 @@ export const ErrorModal = ({ error }): string => {
       <span>{error}</span>
     </div>
   );
+
+  return content;
 };

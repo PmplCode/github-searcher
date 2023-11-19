@@ -1,26 +1,27 @@
 "use client";
 
 import { createContext, useContext, SetStateAction, useState } from "react";
+import { GitHubUser, GlobalContextProps } from '../types';
 
-const GlobalContext = createContext({
-  users: "" || null,
-  setUsers: (): string | null => "" || null,
-  uniqueUser: "" || null,
-  setUniqueUser: (): string | null => "" || null,
-  userProjects: [] || null,
-  setUserProjects: (): [] => [],
+const GlobalContext = createContext<GlobalContextProps>({
+  users: null,
+  setUsers: () => {},
+  uniqueUser: null,
+  setUniqueUser: () => {},
+  userProjects: null,
+  setUserProjects: () => {},
   loading: false,
-  setLoading: (): boolean => false,
+  setLoading: () => {},
   error: "",
-  setError: (): string => "",
+  setError: () => {},
   searchStep: 0,
-  setSearchStep: (): number => 0,
+  setSearchStep: () => {},
 });
 
 export const GlobalContextProvider = ({ children }: { children: React.ReactNode }) => {
-  const [users, setUsers] = useState(null);
-  const [uniqueUser, setUniqueUser] = useState(null);
-  const [userProjects, setUserProjects] = useState(null);
+  const [users, setUsers] = useState<GitHubUser[] | null>(null);
+  const [uniqueUser, setUniqueUser] = useState<GitHubUser | null>(null);
+  const [userProjects, setUserProjects] = useState<any[] | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [searchStep, setSearchStep] = useState(0);

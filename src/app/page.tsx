@@ -32,6 +32,7 @@ export default function Home() {
             width={100}
             height={100}
             className="w-20 md:w-16 lg:w-[100px]"
+            priority={true}
           />
         </div>
         <Search />
@@ -58,7 +59,7 @@ export default function Home() {
                   {<UserCard uniqueUser={uniqueUser} />}
                 </aside>
                 <section className="w-full md:pr-6">
-                  <ProjectList projects={userProjects} />
+                  <ProjectList projects={userProjects ?? []} />
                 </section>
               </div>
             )}
