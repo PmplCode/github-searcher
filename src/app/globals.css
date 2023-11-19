@@ -13,4 +13,25 @@ body {
   bottom: 0;
   right: 0;
   left: 0;
+  scroll-behavior: smooth !important;
+}
+
+.scroll-to-top-btn {
+  position: fixed; /* Fixed/sticky position */
+  bottom: 20px; /* Place the button at the bottom of the page */
+  right: 30px; /* Place the button 30px from the right */
+  z-index: 99; /* Make sure it does not overlap */
+  cursor: pointer; /* Add a mouse pointer on hover */
+  transition: transform 0.3s ease-in-out; /* Added transition for smooth effect */
+}
+
+.scroll-to-top-btn:hover {
+  transform: translateY(-5px); /* Move up on hover */
+}
+.scroll-to-top-btn:hover:active {
+  transform: translateY(5px); /* Move down on click */
+}
+
+.text-balance {
+  text-wrap: balance;
 }

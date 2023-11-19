@@ -78,9 +78,9 @@ export const ProjectList: React.FC<ProjectListProps> = ({ projects }) => {
     <>
       <ProjectSearchBar projects={projects} onSearch={handleSearch} />
       <div className="project-list">
-        {filteredProjects.map((project) => (
+        {filteredProjects.length > 0 ? filteredProjects.map((project) => (
           <ProjectCard key={project.id} project={project} />
-        ))}
+        )) : <p className="font-raleway text-xl text-center w-[91vw] md:w-auto mx-auto md:text-2xl lg:text-3xl text-balance my-3 md:my-8">No projects found.</p>}
       </div>
     </>
   );

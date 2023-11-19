@@ -13,7 +13,7 @@ const ProjectCard = ({ project }) => {
   } = project;
 
   return (
-    <div className="max-w-sm rounded overflow-hidden shadow-lg bg-white mx-auto my-8">
+    <div className="rounded overflow-hidden shadow-lg bg-white mx-auto max-w-sm my-8 md:max-w-none">
       <div className="px-6 py-4">
         <div className="font-bold text-xl mb-2">{name}</div>
         <p className="text-gray-700 text-base">{full_name}</p>
@@ -37,7 +37,7 @@ const ProjectCard = ({ project }) => {
           href={html_url}
           target="_blank"
           rel="noopener noreferrer"
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          className="bg-[#0f54a9] hover:bg-[#0d2244] text-white font-bold py-2 px-4 rounded"
         >
           View on GitHub
         </a>

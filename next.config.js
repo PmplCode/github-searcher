@@ -8,6 +8,12 @@ const nextConfig = {
       {
         hostname: "github.githubassets.com",
       },
+      {
+        hostname: "img.icons8.com",
+      },
+      {
+        hostname: "icons.veryicon.com",
+      },
     ],
   }
 };

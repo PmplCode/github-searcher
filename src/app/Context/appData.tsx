@@ -11,6 +11,10 @@ const GlobalContext = createContext({
   setUserProjects: (): [] => [],
   loading: false,
   setLoading: (): boolean => false,
+  error: "",
+  setError: (): string => "",
+  searchStep: 0,
+  setSearchStep: (): number => 0,
 });
 
 export const GlobalContextProvider = ({ children }) => {
@@ -18,9 +22,8 @@ export const GlobalContextProvider = ({ children }) => {
   const [uniqueUser, setUniqueUser] = useState(null);
   const [userProjects, setUserProjects] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
   const [searchStep, setSearchStep] = useState(0);
-
-
 
   return (
     <GlobalContext.Provider
@@ -34,7 +37,9 @@ export const GlobalContextProvider = ({ children }) => {
         loading,
         setLoading,
         searchStep,
-        setSearchStep
+        setSearchStep,
+        error,
+        setError,
       }}
     >
       {children}
@@ -42,4 +47,4 @@ export const GlobalContextProvider = ({ children }) => {
   );
 };
 
-export const useGlobalContext = () => useContext(GlobalContext)
+export const useGlobalContext = () => useContext(GlobalContext);
