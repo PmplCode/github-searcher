@@ -1,16 +1,15 @@
 /** @type {import('tailwindcss').Config} */
-import {nextui} from "@nextui-org/react";
 
 module.exports = {
   content: [
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
- 
-    // Or if using `src` directory:
-    "./src/**/*.{js,ts,jsx,tsx,mdx}",
-    "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
+    "./src/app/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/**/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/*.{js,ts,jsx,tsx,mdx}"
   ],
+  preflight: false,
   theme: {
     screens: {
       xs: "480px",
@@ -43,6 +42,7 @@ module.exports = {
     extend: {
       fontFamily: {
         raleway: ['Raleway', 'sans-serif'],
+        mulish: ['Mulish', 'comic-sans'],
       },
     },
   },
@@ -74,6 +74,13 @@ module.exports = {
   variants: {
     extend: {},
   },
-  darkMode: "class",
-  plugins: [nextui()],
+  daisyui: {
+    styled: true,
+    themes: true,
+    base: true,
+    utils: true,
+    logs: true,
+    rtl: false
+  },
+  plugins: [require("daisyui")],
 };
