@@ -23,15 +23,15 @@ export default function Home() {
   } = useGlobalContext();
 
   return (
-    <main className="text-[#414141] pb-6 max-w-[1440px] mx-auto">
-      <div className="navbar bg-base-100 flex-row items-center justify-around border-b-3 border-[#414141]">
+    <main className="text-[#414141] dark:text-[#fff] pb-6 max-w-[1440px] mx-auto bg-base-100">
+      <div className="navbar flex-row items-center justify-around border-b-3 border-[#414141] bg-white dark:bg-[#1E272E]">
         <div className="flex flex-row items-center">
           <Image
             src="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png"
             alt="github logo"
             width={100}
             height={100}
-            className="w-20 md:w-16 lg:w-[100px]"
+            className="w-20 lg:w-[100px] md:h-auto"
             priority={true}
           />
         </div>

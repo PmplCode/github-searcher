@@ -51,7 +51,7 @@ export const ProjectSearchBar: React.FC<ProjectSearchBarProps> = ({
       <input
         type="text"
         placeholder="Search by name"
-        className="input input-bordered input-md w-full flex-1 max-w-[50vw]"
+        className="input input-bordered input-md w-full flex-1 max-w-[50vw] bg-white dark:bg-[#1E272E] text-gray-800 dark:text-gray-300 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:border-[#3498DB] dark:focus:border-[#3498DB] rounded"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />

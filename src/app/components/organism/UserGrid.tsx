@@ -45,7 +45,7 @@ export const UserGrid = ({ users }: { users: GitHubUserResponse }) => {
 
   const resultPhrase =
     users.total_count > 0 ? (
-      <h3 className="text-center font-raleway text-2xl w-[fit-content] mx-auto my-6 lg:text-3xl">
+      <h3 className="text-center font-raleway text-2xl w-[fit-content] mx-auto my-6 lg:text-3xl dark:text-[#fff]">
         Found <b>{users.total_count}</b> results for{" "}
         <b>{users.items[0].login}</b> <br />{" "}
         {users.total_count > 30 && (
@@ -55,12 +55,11 @@ export const UserGrid = ({ users }: { users: GitHubUserResponse }) => {
         )}
       </h3>
     ) : (
-      <h3 className="text-center font-raleway text-2xl w-[fit-content] mx-auto my-6 lg:text-3xl">
+      <h3 className="text-center font-raleway text-2xl w-[fit-content] mx-auto my-6 lg:text-3xl dark:text-[#fff]">
         No matches found
       </h3>
     );
 
-  // Calculate the range of users to display for the current page
   const indexOfLastUser = currentPage * usersPerPage;
   const indexOfFirstUser = indexOfLastUser - usersPerPage;
   const currentUsers = users.items.slice(indexOfFirstUser, indexOfLastUser);
@@ -68,7 +67,7 @@ export const UserGrid = ({ users }: { users: GitHubUserResponse }) => {
   const renderUsers = () => {
     return currentUsers.map((user) => (
       <div
-        className="card w-40 bg-base-100 shadow-xl border-2 cursor-pointer hover:w-44 transition-all duration-100	ease-in"
+        className="card w-40 bg-base-100 dark:bg-[#1E272E] shadow-xl border-2 cursor-pointer hover:scale-[103%] transition-all duration-100 ease-in"
         key={user.id}
         onClick={() => handleClickOnUser(user.login)}
       >
@@ -80,7 +79,7 @@ export const UserGrid = ({ users }: { users: GitHubUserResponse }) => {
           />
         </figure>
         <div className="card-body items-center text-center break-all">
-          <h2 className="card-title">{user.login}</h2>
+          <h2 className="card-title dark:text-[#fff]">{user.login}</h2>
         </div>
       </div>
     ));

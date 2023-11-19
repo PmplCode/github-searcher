@@ -18,8 +18,8 @@ export const UserCard: React.FC<UserCardProps> = ({ uniqueUser }) => {
   } = uniqueUser;
 
   return (
-    <div className="">
-      <div className="card w-full bg-base-100 shadow-xl">
+    <div className="bg-white dark:bg-[#1E272E] rounded-md overflow-hidden transition-transform transform hover:scale-[101%]">
+      <div className="card w-full bg-base-100 dark:bg-[#1E272E] shadow-xl">
         <figure className="px-5 pt-5">
           <Image
             src={avatar_url}
@@ -30,10 +30,10 @@ export const UserCard: React.FC<UserCardProps> = ({ uniqueUser }) => {
           />
         </figure>
         <div className="card-body items-center text-center py-1 pb-4">
-          <h2 className="text-xl font-semibold">{name}</h2>
-          <p className="text-gray-500">@{login}</p>
-          <p className="mt-2 text-gray-600">{bio}</p>
-          <div className="">
+          <h2 className="text-xl font-semibold dark:text-[#fff]">{name}</h2>
+          <p className="text-gray-500 dark:text-gray-400">@{login}</p>
+          <p className="mt-2 text-gray-600 dark:text-gray-300">{bio}</p>
+          <div className="text-gray-500 dark:text-gray-400">
             <p>
               <strong>Repos:</strong> {public_repos}
             </p>
@@ -44,10 +44,15 @@ export const UserCard: React.FC<UserCardProps> = ({ uniqueUser }) => {
               <strong>Following:</strong> {following}
             </p>
           </div>
-          <div className="mt-4 text-gray-500">
+          <div className="mt-4 text-gray-500 dark:text-gray-400">
             <p>
               <strong>GitHub:</strong>{" "}
-              <a href={html_url} target="_blank" rel="noopener noreferrer">
+              <a
+                href={html_url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-blue-500 dark:hover:text-blue-300"
+              >
                 {html_url}
               </a>
             </p>
