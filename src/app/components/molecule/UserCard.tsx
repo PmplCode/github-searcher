@@ -1,6 +1,15 @@
 import { UserCardProps } from "@/app/types";
 import Image from "next/image";
 
+/**
+ * UserCard component displays information about a GitHub user, including
+ * their avatar, name, bio, public repositories, followers, following, and GitHub profile details.
+ *
+ * @component
+ * @param {UserCardProps} props - The props for the UserCard component.
+ * @param {Object} props.uniqueUser - The GitHub user object with details to be displayed.
+ * @returns {JSX.Element | null} The rendered UserCard component or null if uniqueUser is falsy.
+ */
 export const UserCard: React.FC<UserCardProps> = ({ uniqueUser }) => {
   if (!uniqueUser) return null;
 

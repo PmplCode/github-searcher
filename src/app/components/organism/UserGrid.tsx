@@ -4,6 +4,15 @@ import { FetchUniqueUser } from "../utils/get-unique-user-with-projects";
 import { useGlobalContext } from "@/app/Context/appData";
 import { GitHubUserResponse } from "@/app/types";
 
+/**
+ * UserGrid component displays a grid of GitHub users with their avatars and usernames.
+ * Users can be clicked to view more details and projects associated with the selected user.
+ *
+ * @component
+ * @param {Object} props - The props for the UserGrid component.
+ * @param {GitHubUserResponse} props.users - The response object containing GitHub users.
+ * @returns {JSX.Element | null} The rendered UserGrid component or null if users is falsy.
+ */
 export const UserGrid = ({ users }: { users: GitHubUserResponse }) => {
   const {
     setError,
@@ -12,11 +21,14 @@ export const UserGrid = ({ users }: { users: GitHubUserResponse }) => {
     setUserProjects,
     setSearchStep,
   } = useGlobalContext();
+
+  // State for pagination
   const [currentPage, setCurrentPage] = useState(1);
   const usersPerPage = 10;
 
   if (!users) return null;
 
+  // Handles user click to fetch more details and projects
   const handleClickOnUser = async (alias: string) => {
     setLoading(true);
     setError("");
@@ -43,6 +55,7 @@ export const UserGrid = ({ users }: { users: GitHubUserResponse }) => {
     }
   };
 
+  // Result message based on the total_count of users
   const resultPhrase =
     users.total_count > 0 ? (
       <h3 className="text-center font-raleway text-2xl w-[fit-content] mx-auto my-6 lg:text-3xl dark:text-[#fff]">
@@ -60,10 +73,12 @@ export const UserGrid = ({ users }: { users: GitHubUserResponse }) => {
       </h3>
     );
 
+  // Pagination logic
   const indexOfLastUser = currentPage * usersPerPage;
   const indexOfFirstUser = indexOfLastUser - usersPerPage;
   const currentUsers = users.items.slice(indexOfFirstUser, indexOfLastUser);
 
+  // Renders individual user cards
   const renderUsers = () => {
     return currentUsers.map((user) => (
       <div
@@ -85,6 +100,7 @@ export const UserGrid = ({ users }: { users: GitHubUserResponse }) => {
     ));
   };
 
+  // Handles moving to the next page
   const handleNextPage = () => {
     window.scrollTo({
       top: 0,
@@ -93,6 +109,7 @@ export const UserGrid = ({ users }: { users: GitHubUserResponse }) => {
     setCurrentPage(currentPage + 1);
   };
 
+  // Handles moving to the previous page
   const handlePrevPage = () => {
     if (currentPage > 1) {
       window.scrollTo({
@@ -103,6 +120,7 @@ export const UserGrid = ({ users }: { users: GitHubUserResponse }) => {
     }
   };
 
+  // Render the UserGrid component with user cards and pagination
   return (
     <section>
       {resultPhrase}

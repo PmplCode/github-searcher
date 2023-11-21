@@ -3,11 +3,29 @@ import { Select } from "@nextui-org/select";
 import { SelectItem } from "@nextui-org/select";
 import { Project } from "@/app/types";
 
+/**
+ * Represents the properties for the ProjectSearchBar component.
+ */
 interface ProjectSearchBarProps {
+  /**
+   * Callback function invoked when the user performs a search.
+   * @param {Object} data - The search criteria containing name and technologies.
+   * @param {string} data.name - The project name to search for.
+   * @param {string} data.technologies - The selected technology for filtering.
+   */
   onSearch: (data: { name: string; technologies: string }) => void;
-  projects: Project[]; // Replace YourProjectType with the actual type of your project
+  projects: Project[];
 }
 
+/**
+ * ProjectSearchBar component provides a search bar and technology filter for projects.
+ *
+ * @component
+ * @param {ProjectSearchBarProps} props - The props for the ProjectSearchBar component.
+ * @param {Function} props.onSearch - Callback function for handling search.
+ * @param {Project[]} props.projects - List of projects used for collecting unique technologies.
+ * @returns {JSX.Element} The rendered ProjectSearchBar component.
+ */
 export const ProjectSearchBar: React.FC<ProjectSearchBarProps> = ({
   onSearch,
   projects,
@@ -18,6 +36,9 @@ export const ProjectSearchBar: React.FC<ProjectSearchBarProps> = ({
     []
   );
 
+  /**
+   * Handles the search action by invoking the onSearch callback with the search criteria.
+   */
   const handleSearch = useCallback(() => {
     onSearch({
       name: searchTerm,
@@ -26,6 +47,7 @@ export const ProjectSearchBar: React.FC<ProjectSearchBarProps> = ({
     });
   }, [onSearch, searchTerm, selectedTechnologies]);
 
+  // Effect to collect unique technologies when projects change
   useEffect(() => {
     let uniqueTechnologies = new Set<string>();
 
@@ -34,12 +56,11 @@ export const ProjectSearchBar: React.FC<ProjectSearchBarProps> = ({
         uniqueTechnologies.add(project.language);
       }
     });
-
     const technologiesArray: string[] = Array.from(uniqueTechnologies);
-
     setCollectedTechnologies(technologiesArray);
   }, [projects]);
 
+  // Effect to trigger search when search term or selected technologies change
   useEffect(() => {
     handleSearch();
   }, [searchTerm, selectedTechnologies]);

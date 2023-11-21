@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 interface Project {
   name: string;
@@ -15,7 +15,12 @@ interface ProjectCardProps {
   project: Project;
 }
 
+/**
+ * Represents a GitHub project with details such as name, description, language, etc.
+ */
+
 const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
+  // Destructuring project object for easy access to its properties
   const {
     name,
     full_name,
@@ -30,12 +35,26 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
   return (
     <div className="rounded overflow-hidden shadow-lg bg-white dark:bg-[#1E272E] mx-auto max-w-sm my-8 md:max-w-none">
       <div className="px-6 py-4">
-        <div className="dark:text-[#636262] text-[#fff] font-bold text-2xl mb-2">{name}</div>
-        <p className="text-gray-700 dark:text-gray-300 text-base">{full_name}</p>
-        {description && <p className="text-gray-700 dark:text-gray-300 text-base mt-2">{description}</p>}
-        <p className="text-gray-700 dark:text-gray-300 text-base mt-2">Language: {language}</p>
-        <p className="text-gray-700 dark:text-gray-300 text-base">Forks: {forks_count}</p>
-        <p className="text-gray-700 dark:text-gray-300 text-base">Stars: {stargazers_count}</p>
+        <div className="dark:text-[#636262] text-[#fff] font-bold text-2xl mb-2">
+          {name}
+        </div>
+        <p className="text-gray-700 dark:text-gray-300 text-base">
+          {full_name}
+        </p>
+        {description && (
+          <p className="text-gray-700 dark:text-gray-300 text-base mt-2">
+            {description}
+          </p>
+        )}
+        <p className="text-gray-700 dark:text-gray-300 text-base mt-2">
+          Language: {language}
+        </p>
+        <p className="text-gray-700 dark:text-gray-300 text-base">
+          Forks: {forks_count}
+        </p>
+        <p className="text-gray-700 dark:text-gray-300 text-base">
+          Stars: {stargazers_count}
+        </p>
         <div className="mt-4">
           {topics.map((topic) => (
             <span

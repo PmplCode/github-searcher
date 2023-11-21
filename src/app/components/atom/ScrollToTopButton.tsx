@@ -2,7 +2,15 @@ import { useState, useEffect } from "react";
 
 import Image from "next/image";
 
+/**
+ * ScrollToTopButton component provides a button that appears when the user scrolls
+ * down a certain distance and allows them to scroll back to the top of the page smoothly.
+ *
+ * @component
+ */
+
 export const ScrollToTopButton = () => {
+  // State to determine the visibility of the scroll-to-top button
   const [isVisible, setIsVisible] = useState(false);
 
   // Show button when user scrolls down 100px

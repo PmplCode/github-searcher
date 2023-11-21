@@ -11,6 +11,11 @@ import { HomeSvg } from "./components/atom/HomeSvg";
 import { ArrowBackSvg } from "./components/atom/ArrowBackSvg";
 import { ErrorModal } from "./components/atom/ErrorModal";
 
+/**
+ * Home component representing the main page of the application.
+ *
+ * @returns {React.ReactNode} The main content of the home page.
+ */
 export default function Home() {
   const {
     users,
@@ -39,6 +44,7 @@ export default function Home() {
       </div>
 
       <div className="relative">
+        {/* Loading spinner or content based on search step */}
         {loading ? (
           <Spinner />
         ) : (
