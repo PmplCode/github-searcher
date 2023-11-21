@@ -8,13 +8,30 @@ interface ProjectSearchBarProps {
   onSearch: (data: { name: string; technologies: string }) => void;
 }
 
+/**
+ * ProjectList component displays a list of projects with a search bar for filtering.
+ *
+ * @component
+ * @param {ProjectListPropsWithSearch} props - The props for the ProjectList component.
+ * @param {Project[]} props.projects - List of projects to be displayed and filtered.
+ * @param {Function} props.onSearch - Callback function for handling search.
+ * @returns {JSX.Element | null} The rendered ProjectList component or null if filteredProjects is falsy.
+ */
 export const ProjectList: React.FC<ProjectListProps> = ({ projects }) => {
   const [filteredProjects, setFilteredProjects] = useState<Project[]>(projects);
 
+  // Update filtered projects when projects prop changes
   useEffect(() => {
     setFilteredProjects(projects);
   }, [projects]);
 
+  /**
+   * Handles the search action by updating the filtered projects based on search criteria.
+   *
+   * @param {Object} searchParams - The search criteria containing name and technologies.
+   * @param {string} searchParams.name - The project name to search for.
+   * @param {string} searchParams.technologies - The selected technology for filtering.
+   */
   const handleSearch = (searchParams: {
     name: string;
     technologies: string;

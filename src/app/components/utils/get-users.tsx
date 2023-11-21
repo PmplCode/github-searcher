@@ -1,7 +1,14 @@
+/**
+ * Fetches a list of GitHub users based on a search query.
+ *
+ * @param {string} query - The search query to find GitHub users.
+ * @returns {Promise<any>} A Promise resolving to the response data containing a list of GitHub users.
+ * @throws {Error} If there's an error fetching data or parsing the JSON response.
+ */
 export async function FetchUsers(query: string) {
-  const res = await fetch(`https://api.github.com/search/users?q=${query}`);
-
   try {
+    // Fetch GitHub users based on the search query
+    const res = await fetch(`https://api.github.com/search/users?q=${query}`);
     const data = await res.json();
 
     if (!res.ok) {

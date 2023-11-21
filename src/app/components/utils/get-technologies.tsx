@@ -2,6 +2,14 @@ interface Project {
   full_name: string;
 }
 
+/**
+ * ¡Un-used component!
+ * Fetches unique technologies used across a list of projects.
+ *
+ * @param {Project[]} projects - The list of projects to fetch technologies for.
+ * @returns {Promise<string[]>} A Promise resolving to an array of unique technologies.
+ * @throws {Error} If there's an error fetching technologies.
+ */
 export async function FetchUniqueTechnologies(
   projects: Project[]
 ): Promise<string[]> {
