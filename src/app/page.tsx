@@ -10,6 +10,7 @@ import ScrollToTopButton from "./components/atom/ScrollToTopButton";
 import { HomeSvg } from "./components/atom/HomeSvg";
 import { ArrowBackSvg } from "./components/atom/ArrowBackSvg";
 import { ErrorModal } from "./components/atom/ErrorModal";
+import landingImageSrc2 from "../../public/landing-image-2.jpg";
 
 /**
  * Home component representing the main page of the application.
@@ -44,6 +45,25 @@ export default function Home() {
       </div>
 
       <div className="relative">
+        {searchStep === 0 && (
+          <>
+            <div className="text-center mb-8 mt-3">
+              <h1 className="text-4xl lg:text-5xl font-semibold text-[#414141] dark:text-[#fff] font-raleway">
+                Welcome to Github User Searcher
+              </h1>
+              <p className="text-[#636363] dark:text-[#ccc]">
+                Discover GitHub users and their projects with ease.
+              </p>
+            </div>
+            <Image
+              src={landingImageSrc2}
+              alt="landing image"
+              className="max-w-[80vw] mx-auto rounded-lg shadow-lg"
+              width={1024}
+              height={1024}
+            />
+          </>
+        )}
         {/* Loading spinner or content based on search step */}
         {loading ? (
           <Spinner />

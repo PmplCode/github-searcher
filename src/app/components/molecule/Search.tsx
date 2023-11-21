@@ -82,6 +82,7 @@ export const Search = () => {
         onKeyDown={handleKeyDown}
       />
       <button
+        aria-label="Search button"
         className="btn join-item xl:btn-lg bg-[#3498DB] dark:bg-[#0f54a9] hover:bg-[#0d2244] text-white font-bold py-2 px-4 rounded"
         // @ts-ignore: Unreachable code error
         onClick={handleSubmit}
