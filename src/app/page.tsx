@@ -47,11 +47,11 @@ export default function Home() {
       <div className="relative">
         {searchStep === 0 && (
           <>
-            <div className="text-center mb-8 mt-3">
+            <div className="text-center text-balance px-4 mb-8 mt-12">
               <h1 className="text-4xl lg:text-5xl font-semibold text-[#414141] dark:text-[#fff] font-raleway">
                 Welcome to Github User Searcher
               </h1>
-              <p className="text-[#636363] dark:text-[#ccc]">
+              <p className="text-[#636363] dark:text-[#ccc] mt-8">
                 Discover GitHub users and their projects with ease.
               </p>
             </div>
