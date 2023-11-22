@@ -25,6 +25,11 @@ body {
   min-height: 100dvh;
 }
 
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
 .scroll-to-top-btn {
   position: fixed; /* Fixed/sticky position */
   bottom: 20px; /* Place the button at the bottom of the page */
