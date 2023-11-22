@@ -29,6 +29,19 @@ body {
   width: 4px;
   height: 4px;
 }
+@media (min-width: 481px) {
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+}
+*::-webkit-scrollbar-thumb {
+  border-radius: 100px;
+  background: #8a8a8a;
+}
+*::-webkit-scrollbar-track {
+  -webkit-box-shadow: none;
+}
 
 .scroll-to-top-btn {
   position: fixed; /* Fixed/sticky position */
