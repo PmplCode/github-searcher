@@ -8,8 +8,10 @@
   color-scheme: light dark;
 }
 html {
-  height: 100lvh;
-  min-height: -webkit-fill-available;
+  height: 100%;
+  -ms-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
 }
 body {
   position: absolute;
@@ -17,10 +19,10 @@ body {
   bottom: 0;
   right: 0;
   left: 0;
-  min-height: auto;
   scroll-behavior: smooth;
   --tw-bg-opacity: 1;
   background-color: var(--fallback-b1, oklch(var(--b1) / var(--tw-bg-opacity)));
+  min-height: 100dvh;
 }
 
 .scroll-to-top-btn {
