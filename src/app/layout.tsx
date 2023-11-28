@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Github search portal",
-  description: "Project for MVST, Github user searcher.",
+  description: "Discover GitHub users and their projects with ease.",
   applicationName: "Github search portal",
   authors: [
     { name: "Eloi Pampliega", url: "https://eloipampliega.netlify.app/" },

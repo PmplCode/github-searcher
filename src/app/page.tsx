@@ -37,7 +37,7 @@ export default function Home() {
             alt="github logo"
             width={100}
             height={100}
-            className="w-20 lg:w-[100px] md:h-auto"
+            className="w-20 lg:w-[100px] md:h-auto mix-blend-multiply"
             priority={true}
           />
         </div>
