@@ -15,7 +15,8 @@ const nextConfig = {
         hostname: "icons.veryicon.com",
       },
     ],
-  }
+  },
+  output: 'standalone',
 };
 
 module.exports = nextConfig;
